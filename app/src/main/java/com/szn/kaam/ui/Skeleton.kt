@@ -1,6 +1,7 @@
 package com.szn.kaam.ui
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -22,6 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.szn.kaam.R
+import com.szn.kaam.model.Citation
 import com.szn.kaam.ui.navigation.BottomNavigationBar
 import com.szn.kaam.ui.navigation.NavRoutes
 import com.szn.kaam.ui.theme.KaamTheme
@@ -90,8 +92,9 @@ fun NavigationHost(
         }
 
         composable(NavRoutes.Detail.route,
-            arguments = listOf(navArgument("id") { })) { backStackEntry ->
-
+            arguments = listOf(navArgument("citation") { })) { backStackEntry ->
+            val cit = navController.previousBackStackEntry?.savedStateHandle?.get<Citation>("citation")
+            Log.w("NavHost", "navigate to detail ${cit?.citation}")
         }
 
     }

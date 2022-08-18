@@ -12,7 +12,7 @@ private val DarkColorPalette = darkColors(
     primaryVariant = Purple700,
     secondary = Teal200,
     onBackground = Color.Black,
-    background = Color.Black,
+    background = Color.DarkGray,
     onPrimary = Color.White,
     )
 

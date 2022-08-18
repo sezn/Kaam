@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("kotlin-parcelize")
     id("androidx.navigation.safeargs")
 }
 
@@ -62,6 +63,8 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    //    Images
+    implementation("io.coil-kt:coil-compose:2.1.0")
     // Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
