@@ -6,3 +6,5 @@ sealed class NavRoutes(val route: String) {
 }
 const val HOME = "home"
 const val DETAIL = "detail"
+const val CITATIONS = "citations"
+const val LOADING = "loading"

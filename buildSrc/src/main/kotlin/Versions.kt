@@ -4,7 +4,7 @@
  */
 object Versions {
     const val HILT = "2.43.2"
-    const val COMPOSE = "1.2.1"
+    const val COMPOSE = "1.3.0-alpha01"
     const val COROUTINES = "1.6.3"
     const val LIFECYCLE = "2.5.0"
 }
