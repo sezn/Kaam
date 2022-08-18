@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -20,6 +21,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "BASE_URL", "\"https://kaamelott.chaudie.re/api/\"")
     }
 
     kotlinOptions {
@@ -42,6 +44,9 @@ dependencies {
     implementation("androidx.compose.ui:ui:${Versions.COMPOSE}")
     implementation("androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}")
     implementation("androidx.compose.material:material:1.2.0-beta01")
+    implementation("androidx.navigation:navigation-compose:2.5.1")
+    implementation("androidx.navigation:navigation-common-ktx:2.5.1")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.5.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
