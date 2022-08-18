@@ -11,3 +11,8 @@
     Hilt
     Jetpack compose
     Retrofit & Okhttp
+
+
+## App:
+### Home
+Display a list of Citations
