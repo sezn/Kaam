@@ -3,42 +3,34 @@ package com.szn.kaam.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.szn.kaam.model.Citation
-import com.szn.kaam.network.APIService
-import com.szn.kaam.network.State
+import com.szn.kaam.db.Quote
+import com.szn.kaam.repo.KaamRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class KaamViewModel @Inject constructor(private val api: APIService): ViewModel() {
+class KaamViewModel @Inject constructor(//private val api: APIService,
+                                        private val repository: KaamRepository): ViewModel() {
 
     val TAG = KaamViewModel::class.java.simpleName
-    val state by lazy { MutableStateFlow<State>(State.START) }
-    val citations by lazy { MutableStateFlow(mutableListOf<Citation>()) }
-    val persos = mutableListOf<String>()
+    val state = repository.state
+    val citations = repository.citations
+    val persos = repository.persos
 
     init {
         Log.w(TAG, "init...")
         viewModelScope.launch {
-            getAll()
+            repository.getAll()
         }
     }
 
     suspend fun getAll() {
-        val cits = api.getAll()
-        Log.w(TAG, "status=${cits.status}  cits = ${cits.citation.size}")
-        if(cits.citation.isNullOrEmpty()){
-            state.emit(State.FAILURE("Empty"))
-        } else{
-            // Build Perso List
-            cits.citation.groupBy { it.infos.personnage }.forEach { (t, u) ->
-                persos.add(t!!)
-            }
-            citations.emit(cits.citation.toMutableList())
-            state.emit(State.SUCCESS)
-        }
+        repository.getAll()
+    }
+
+    fun filter(value: String): MutableList<Quote> {
+        return citations.value.filter { it.personnage == value }.toMutableList()
     }
 
 }

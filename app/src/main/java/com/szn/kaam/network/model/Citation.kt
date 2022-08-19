@@ -1,4 +1,4 @@
-package com.szn.kaam.model
+package com.szn.kaam.network.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -8,6 +8,3 @@ data class Citation(
     val citation: String,
     val infos: Infos
 ): Parcelable
-
-
-val MockCitation = Citation("Test", Infos(null, null, null, null, null))

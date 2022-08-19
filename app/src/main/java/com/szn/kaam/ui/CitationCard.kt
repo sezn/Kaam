@@ -23,14 +23,14 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.szn.kaam.R
 import com.szn.kaam.Utils
-import com.szn.kaam.model.Citation
-import com.szn.kaam.model.MockCitation
+import com.szn.kaam.db.MockCitation
+import com.szn.kaam.db.Quote
 
 
 @Composable
-fun CitationCard(citation: Citation, onClick: (Citation) -> Unit) {
+fun CitationCard(citation: Quote, onClick: (Quote) -> Unit) {
     val context = LocalContext.current
-    val img = Utils.getPicturePath(citation.infos.personnage.toString())
+    val img = Utils.getPicturePath(citation.personnage.toString())
     Card(
         backgroundColor = MaterialTheme.colors.primarySurface,
         elevation = 4.dp,
@@ -72,7 +72,7 @@ fun CitationCard(citation: Citation, onClick: (Citation) -> Unit) {
                         .clip(RoundedCornerShape(50))
                         .align(CenterHorizontally)
                 )
-                Text(text = citation.infos.personnage.toString(),
+                Text(text = citation.personnage.toString(),
                     color = MaterialTheme.colors.onPrimary,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()

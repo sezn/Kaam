@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.szn.kaam.model.Citation
+import com.szn.kaam.db.Quote
+import com.szn.kaam.network.model.Citation
 import com.szn.kaam.network.State
-import com.szn.kaam.ui.navigation.LOADING
 import com.szn.kaam.viewmodel.KaamViewModel
 import kotlinx.coroutines.launch
 
@@ -99,8 +99,8 @@ fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltVi
 
 }
 
-fun filter(selected: String, citations: MutableList<Citation>): MutableList<Citation> {
+fun filter(selected: String, citations: MutableList<Quote>): MutableList<Quote> {
     Log.w("Filter", "filter $selected")
-    return citations.filter { it.infos.personnage == selected }.toMutableList()
+    return citations.filter { it.personnage == selected }.toMutableList()
 }
 

@@ -40,8 +40,9 @@ fun CitsView(viewModel: KaamViewModel, navController: NavHostController, onSelec
                 Log.w("Cits", "onItemSelected $it")
                 selected.value = it
 
-                viewModel.citations.value = citations.filter { it.infos.personnage == selected.value }.toMutableList()
+//                viewModel.citations.value = citations.filter { it.infos.personnage == selected.value }.toMutableList()
 //                citations = citations.filter { it.infos.personnage == selected.value }.toMutableList()
+//                citations = viewModel.filter(selected.value)
                 onSelected(it)
             },
             selectedItemFactory = { modifier, item ->

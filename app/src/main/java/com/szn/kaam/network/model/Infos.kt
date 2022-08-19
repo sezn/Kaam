@@ -1,4 +1,4 @@
-package com.szn.kaam.model
+package com.szn.kaam.network.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
