@@ -96,7 +96,11 @@ fun NavigationHost(
             arguments = listOf(navArgument("citation") { })) { backStackEntry ->
             val cit = navController.previousBackStackEntry?.savedStateHandle?.get<Citation>("citation")
             Log.w("NavHost", "navigate to detail ${cit?.citation}")
+            cit?.let {
+                CitationView(it)
+            }
         }
 
     }
 }
+
