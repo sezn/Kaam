@@ -49,14 +49,15 @@ fun Skeleton(lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current) {
             topBar = {
                 if(conf.orientation == Configuration.ORIENTATION_PORTRAIT)
                     TopAppBar(
-                        title = { Text(title.value, color = Color.White) },
-                        backgroundColor = MaterialTheme.colors.onBackground,
+                        title = { Text(title.value, color = MaterialTheme.colors.onPrimary) },
+                        backgroundColor = MaterialTheme.colors.background,
                         navigationIcon = {
                             if (canPop) {
                                 IconButton(onClick = {
                                     navController.popBackStack()
                                 }) {
-                                    Icon(imageVector = Icons.Filled.ArrowBack, null, tint = Color.White)
+                                    Icon(imageVector = Icons.Filled.ArrowBack, null,
+                                        tint = MaterialTheme.colors.onPrimary)
                                 }
                             }
                         }

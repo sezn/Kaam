@@ -20,26 +20,29 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.szn.kaam.model.Citation
 import com.szn.kaam.network.State
 import com.szn.kaam.ui.navigation.LOADING
 import com.szn.kaam.viewmodel.KaamViewModel
 import kotlinx.coroutines.launch
+
+
 
 @Composable
 fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltViewModel()) {
     val TAG = "Home"
     val scope = rememberCoroutineScope()
     val state by viewModel.state.collectAsState()
+    var citations = viewModel.citations.value.toMutableList()
     Log.w(TAG, "init $state")
 
     Surface(
         modifier = Modifier
             .fillMaxSize()
             .testTag(TAG)
-            .padding(0.dp, 0.dp, 0.dp, 64.dp),
+            .padding(0.dp, 8.dp, 0.dp, 64.dp),
         color = MaterialTheme.colors.background
     ) {
-
 
         state.let { state ->
             Log.w(TAG, "State changed to $state")
@@ -47,21 +50,9 @@ fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltVi
                 /**
                  * If Loading, display CircularProgress
                  */
-                /**
-                 * If Loading, display CircularProgress
-                 */
                 State.START, State.LOADING -> {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize().testTag(LOADING)
-                    ) {
-                        CircularProgressIndicator(color = Color.Red)
-                    }
+                    LoadingView()
                 }
-
-                /**
-                 * If Failed, Display a Message, and a Toast
-                 */
 
                 /**
                  * If Failed, Display a Message, and a Toast
@@ -97,12 +88,19 @@ fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltVi
                  */
                 State.SUCCESS -> {
                     Log.e(TAG, "State SUCCESS!!!")
-                    CitsView(viewModel.citations.value, navController)
+                    CitsView(viewModel, navController){
+                        filter(it, citations)
+                    }
                 }
 
             }
         }
     }
 
+}
+
+fun filter(selected: String, citations: MutableList<Citation>): MutableList<Citation> {
+    Log.w("Filter", "filter $selected")
+    return citations.filter { it.infos.personnage == selected }.toMutableList()
 }
 

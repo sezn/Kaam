@@ -17,6 +17,7 @@ class KaamViewModel @Inject constructor(private val api: APIService): ViewModel(
     val TAG = KaamViewModel::class.java.simpleName
     val state by lazy { MutableStateFlow<State>(State.START) }
     val citations by lazy { MutableStateFlow(mutableListOf<Citation>()) }
+    val persos = mutableListOf<String>()
 
     init {
         Log.w(TAG, "init...")
@@ -31,8 +32,12 @@ class KaamViewModel @Inject constructor(private val api: APIService): ViewModel(
         if(cits.citation.isNullOrEmpty()){
             state.emit(State.FAILURE("Empty"))
         } else{
-            state.emit(State.SUCCESS)
+            // Build Perso List
+            cits.citation.groupBy { it.infos.personnage }.forEach { (t, u) ->
+                persos.add(t!!)
+            }
             citations.emit(cits.citation.toMutableList())
+            state.emit(State.SUCCESS)
         }
     }
 
