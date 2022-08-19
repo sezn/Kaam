@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.szn.kaam.R
-import com.szn.kaam.Utils
 import com.szn.kaam.db.MockCitation
 import com.szn.kaam.db.Quote
 
@@ -30,7 +29,7 @@ import com.szn.kaam.db.Quote
 @Composable
 fun CitationCard(citation: Quote, onClick: (Quote) -> Unit) {
     val context = LocalContext.current
-    val img = Utils.getPicturePath(citation.personnage.toString())
+    val img = citation.getPicturePath()
     Card(
         backgroundColor = MaterialTheme.colors.primarySurface,
         elevation = 4.dp,
