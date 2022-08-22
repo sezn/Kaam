@@ -11,6 +11,8 @@
     Hilt
     Jetpack compose
     Retrofit & Okhttp
+    Room
+    Datastore
 
 
 ## App:

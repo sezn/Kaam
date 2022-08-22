@@ -1,9 +1,12 @@
 package com.szn.kaam.db
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.szn.kaam.BuildConfig
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity
 data class Quote(@PrimaryKey val citation: String, // Une citation par perso
                  val acteur: String?,
@@ -11,7 +14,7 @@ data class Quote(@PrimaryKey val citation: String, // Une citation par perso
                  val episode: String?,
                  val personnage: String?,
                  val saison: String?
-){
+): Parcelable {
 
     /**
      * Dans la doc, c'est
@@ -23,7 +26,6 @@ data class Quote(@PrimaryKey val citation: String, // Une citation par perso
      */
     fun getPicturePath(): String {
         return BuildConfig.BASE_URL + "personnage/" + personnage + "/pic"
-//        return "${BuildConfig.BASE_URL}personnage/$personnage/pic"
     }
 }
 
