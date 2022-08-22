@@ -22,47 +22,10 @@ import com.szn.kaam.ui.widgets.Spinner
 import com.szn.kaam.viewmodel.KaamViewModel
 
 @Composable
-fun CitsView(viewModel: KaamViewModel, navController: NavHostController, onSelected: (String) -> Unit) {
+fun CitsView(viewModel: KaamViewModel, navController: NavHostController) {
     var citations = viewModel.citations.value
-    val persos = viewModel.persos
-    var selected = remember { mutableStateOf("") }
 
     Column {
-
-        Spinner(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colors.primaryVariant),
-            dropDownModifier = Modifier.wrapContentSize(),
-            items = persos,
-            selectedItem = selected.value,
-            onItemSelected = {
-                Log.w("Cits", "onItemSelected $it")
-                selected.value = it
-
-//                viewModel.citations.value = citations.filter { it.infos.personnage == selected.value }.toMutableList()
-//                citations = citations.filter { it.infos.personnage == selected.value }.toMutableList()
-//                citations = viewModel.filter(selected.value)
-                onSelected(it)
-            },
-            selectedItemFactory = { modifier, item ->
-                Row(
-                    modifier = modifier
-                        .padding(8.dp)
-                        .wrapContentSize()
-                ) {
-                    Text(item, color = MaterialTheme.colors.onPrimary)
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_outline_arrow_drop_down_circle_24),
-                        contentDescription = "drop down arrow"
-                    )
-                }
-            },
-            dropdownItemFactory = { item, _ ->
-                Text(text = item)
-            }
-        )
-        Spacer(modifier = Modifier.fillMaxWidth().height(12.dp))
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier

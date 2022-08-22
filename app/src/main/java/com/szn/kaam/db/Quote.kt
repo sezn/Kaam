@@ -27,4 +27,4 @@ data class Quote(@PrimaryKey val citation: String, // Une citation par perso
     }
 }
 
-val MockCitation = Quote("Test", null, null, null, null, null)
+val MockCitation = Quote("Test", null, null, null, "Lancelot", null)

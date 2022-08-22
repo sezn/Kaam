@@ -10,19 +10,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class KaamViewModel @Inject constructor(//private val api: APIService,
-                                        private val repository: KaamRepository): ViewModel() {
+class KaamViewModel @Inject constructor(private val repository: KaamRepository): ViewModel() {
 
     val TAG = KaamViewModel::class.java.simpleName
     val state = repository.state
     val citations = repository.citations
-    val persos = repository.persos
 
     init {
         Log.w(TAG, "init...")
-        viewModelScope.launch {
-            repository.getAll()
-        }
+
     }
 
     suspend fun getAll() {

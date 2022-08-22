@@ -72,6 +72,7 @@ dependencies {
     implementation("androidx.room:room-ktx:${Versions.ROOM}")
 //    testImplementation("androidx.room:room-testing:${Versions.ROOM}")
 
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Tests
     testImplementation("junit:junit:4.13.2")

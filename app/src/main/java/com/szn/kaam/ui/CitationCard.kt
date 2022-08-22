@@ -80,6 +80,8 @@ fun CitationCard(citation: Quote, onClick: (Quote) -> Unit) {
         }
     }
 }
+
+
 @Preview
 @Composable
 fun CitationPreview() {

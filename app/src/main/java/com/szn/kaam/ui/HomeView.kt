@@ -21,12 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.szn.kaam.db.Quote
-import com.szn.kaam.network.model.Citation
 import com.szn.kaam.network.State
 import com.szn.kaam.viewmodel.KaamViewModel
 import kotlinx.coroutines.launch
-
-
 
 @Composable
 fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltViewModel()) {
@@ -88,9 +85,7 @@ fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltVi
                  */
                 State.SUCCESS -> {
                     Log.e(TAG, "State SUCCESS!!!")
-                    CitsView(viewModel, navController){
-                        filter(it, citations)
-                    }
+                    CitsView(viewModel, navController)
                 }
 
             }
@@ -99,8 +94,4 @@ fun HomeView(navController: NavHostController, viewModel: KaamViewModel = hiltVi
 
 }
 
-fun filter(selected: String, citations: MutableList<Quote>): MutableList<Quote> {
-    Log.w("Filter", "filter $selected")
-    return citations.filter { it.personnage == selected }.toMutableList()
-}
 
