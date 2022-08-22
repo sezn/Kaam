@@ -1,6 +1,6 @@
 package com.szn.kaam.network;
 
-import com.szn.kaam.model.Citations
+import com.szn.kaam.network.model.Citations
 import retrofit2.http.GET
 
 interface APIService {

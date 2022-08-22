@@ -7,4 +7,5 @@ object Versions {
     const val COMPOSE = "1.3.0-alpha01"
     const val COROUTINES = "1.6.3"
     const val LIFECYCLE = "2.5.0"
+    const val ROOM = "2.4.3"
 }

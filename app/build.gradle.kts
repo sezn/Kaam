@@ -65,6 +65,15 @@ dependencies {
 
     //    Images
     implementation("io.coil-kt:coil-compose:2.1.0")
+
+    //Room
+    implementation("androidx.room:room-runtime:${Versions.ROOM}")
+    kapt("androidx.room:room-compiler:${Versions.ROOM}")
+    implementation("androidx.room:room-ktx:${Versions.ROOM}")
+//    testImplementation("androidx.room:room-testing:${Versions.ROOM}")
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
     // Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

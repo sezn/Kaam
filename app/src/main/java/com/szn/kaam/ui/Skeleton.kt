@@ -23,7 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.szn.kaam.R
-import com.szn.kaam.model.Citation
+import com.szn.kaam.network.model.Citation
 import com.szn.kaam.ui.navigation.BottomNavigationBar
 import com.szn.kaam.ui.navigation.NavRoutes
 import com.szn.kaam.ui.theme.KaamTheme
